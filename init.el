@@ -110,6 +110,7 @@
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 (global-hl-line-mode 1)
+(column-number-mode 1)
 (load-theme 'monokai 1)
 ;;(load-theme 'atom-one-dark t)
 

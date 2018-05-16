@@ -9,3 +9,10 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# installed packages
+elpa
+plugins
+
+# temporary file
+smex-items

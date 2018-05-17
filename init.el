@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (when (>= emacs-major-version 24)
      (require 'package)
      (package-initialize)
@@ -43,6 +46,7 @@
     (dolist (pkg my/packages)
       (when (not (package-installed-p pkg))
  (package-install pkg))))
+
 ;; Find Executable Path on OS X
 (when (memq window-system '(mac ns))
    (exec-path-from-shell-initialize))
@@ -161,7 +165,6 @@
 (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
 
 ;; neotree config
-(add-to-list 'load-path "/some/path/neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-smart-open t)
@@ -170,6 +173,8 @@
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-refresh)
+
 ;; neotree & projectile
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."

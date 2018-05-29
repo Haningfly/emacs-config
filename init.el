@@ -11,6 +11,8 @@
 			      )
 	   ))
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 ;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
 
@@ -46,12 +48,6 @@
     (dolist (pkg my/packages)
       (when (not (package-installed-p pkg))
  (package-install pkg))))
-
-;; Find Executable Path on OS X
-(when (memq window-system '(mac ns))
-   (exec-path-from-shell-initialize))
-(exec-path-from-shell-copy-env "GOPATH")
-(exec-path-from-shell-copy-env "GOROOT")
 
 ;; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
 (tool-bar-mode -1)
@@ -90,7 +86,7 @@
 
 ; 开启全局 Company 补全
 (global-company-mode 1)
-;; (require 'company)                                   ; load company mode
+(require 'company)                                   ; load company mode
 (require 'company-go)                                ; load company mode go backend
 (setq company-tooltip-limit 20)                      ; bigger popup window
 (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
@@ -136,8 +132,8 @@
     (atom-one-dark-theme go-guru all-the-icons all-the-icons-dired all-the-icons-gnus all-the-icons-ivy projectile neotree go-snippets go-stacktracer golint yasnippet protobuf-mode use-package flycheck flycheck-color-mode-line flycheck-pycheckers smex evil company-go flymake-go go-autocomplete go-complete go-direx go-mode company hungry-delete swiper counsel smartparens js2-mode nodejs-repl exec-path-from-shell monokai-theme))))
 
 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+;; (when (memq window-system '(mac ns))
+;;   (exec-path-from-shell-initialize))
 (evil-mode 1)
 
 (require 'smex)
@@ -196,5 +192,12 @@
 (yas-global-mode 1)
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;; Find Executable Path on OS X
+;;(when (memq window-system '(mac ns))
+;;    (exec-path-from-shell-copy-env "GOPATH")
+;;    (exec-path-from-shell-copy-env "GOROOT")
+;;    (exec-path-from-shell-initialize)
+;; )
 
 ;;; init.el ends here

@@ -15,4 +15,9 @@ elpa
 plugins
 
 # temporary file
+
+# auto save
+auto-save-list/
+
+# smex
 smex-items
